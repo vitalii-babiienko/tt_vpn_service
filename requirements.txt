@@ -1,4 +1,6 @@
+beautifulsoup4==4.12.2
 crispy-bootstrap5==2023.10
 Django==5.0
 django-crispy-forms==2.1
 django-debug-toolbar==4.2.0
+requests==2.31.0
