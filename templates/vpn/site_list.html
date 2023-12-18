@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>
+    Site List:
+    <a href="{% url 'vpn:site-create' %}" class="btn btn-primary link-to-page">
+      Create a New Site
+    </a>
+  </h2>
+
+  {% if site_list %}
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Open</th>
+      </tr>
+
+      {% for site in site_list %}
+        <tr>
+          <td>
+            <a href="{{ site.get_absolute_url }}">{{ site.name }}</a>
+          </td>
+          <td>{{ site.url }}</td>
+          <td>
+            <button onclick="openSite('{{ site.name }}')" class="btn btn-secondary">Open Site</button>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no sites yet</p>
+  {% endif %}
+
+  <script>
+      function openSite(siteName) {
+          window.open(`/vpn/${siteName}/home/`, '_blank');
+      }
+  </script>
+{% endblock %}

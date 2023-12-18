@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Statistic:</h2>
+
+  {% if detailed_statistic %}
+    <table class="table">
+      <tr>
+        <th>Site</th>
+        <th>Transitions Number</th>
+        <th>Uploaded</th>
+        <th>Downloaded</th>
+        <th>Total</th>
+      </tr>
+
+      {% for site, data in detailed_statistic.items %}
+        <tr>
+          <td>{{ site }}</td>
+          <td>{{ data.transitions_number }}</td>
+          <td>{{ data.uploaded|default:"0" }} MB</td>
+          <td>{{ data.downloaded|default:"0" }} MB</td>
+          <td>{{ data.total|default:"0" }} MB</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no data yet</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Username: {{ customer.username }}
+    <a href="{% url 'vpn:customer-update' pk=customer.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+
+  <p><strong>First name:</strong> {{ customer.first_name }}</p>
+  <p><strong>Last name:</strong> {{ customer.last_name }}</p>
+  <p><strong>Is staff:</strong> {{ customer.is_staff|yesno:"Yes,No" }}</p>
+  <p><strong>Bio:</strong> {{ customer.bio }}</p>
+{% endblock %}
