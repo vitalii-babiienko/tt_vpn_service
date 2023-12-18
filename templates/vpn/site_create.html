@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+  <h1>Create a New Site</h1>
+  <form method="post" action="{% url 'vpn:site-create' %}" novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" value="Create" class="btn btn-primary" />
+  </form>
+
+  {% if error_message %}
+    <p class="text-danger">{{ error_message }}</p>
+  {% endif %}
+{% endblock %}

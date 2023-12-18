@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  <title>{{ object|yesno:"Update,Create" }} Customer | VPN Service</title>
+{% endblock %}
+
+{% block content %}
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header pb-0">
+        <h1 class="text-center">{{ object|yesno:"Update,Create" }} Customer</h1>
+      </div>
+
+      <div class="card-body">
+        <form action="" method="post" novalidate>
+          {% csrf_token %}
+          {{ form|crispy }}
+
+          <div class="text-center">
+            <input type="submit" value="Submit" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
